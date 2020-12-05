@@ -1,0 +1,36 @@
+// C code for hollow rectangle 
+#include <stdio.h> 
+
+// Function to print hollow rectangle 
+void rush00(int n, int m) 
+{ 
+	int i, j; 
+	for (i = 1; i <= n; i++) 
+	{ 
+		for (j = 1; j <= m; j++) 
+		{ 
+			if (i==1 || i==n || j==1 || j==m)			 
+				printf("*");			 
+			else
+				printf(" ");			 
+		} 
+		printf("\n"); 
+	} 
+
+} 
+
+// Driver program for above function 
+int main() 
+{  
+	rush00(int x,int y); 
+	return 0; 
+} 
+
+0 1y 2y 3y 4y 5y  y..
+1 11 12 13 14 15 1y
+2 21 22 23 24 25 2y
+3 31 32 33 34 35 3y
+4 41 42 43 44 45 4y
+x x1 x2 x3 x4 x5 xy
+.
+.

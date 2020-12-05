@@ -1,0 +1,16 @@
+#!/bin/sh
+groups $FT_USER | sed 's/ /,/g' | awk 1 ORS=''
+
+
+sed - stream editor for filtering and transforming text
+	Sed  is  a  stream  editor.  A stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline).  While in some ways
+	similar to an editor which permits scripted edits (such as ed), sed works by making only one pass over the input(s), and is consequently more efficient.  But it  is
+	sed's ability to filter text in a pipeline which particularly distinguishes it from other types of editors.
+
+s/regexp/replacement/
+    Attempt  to  match  regexp against the pattern space.  If successful, replace that portion matched with replacement.  The replacement may contain the special
+    character & to refer to that portion of the pattern space which matched, and the special escapes \1 through \9 to refer to the corresponding matching sub-ex‐
+	pressions in the regexp.
+ex: 'substitute/what.to.replace /what.replace.with/global'
+
+

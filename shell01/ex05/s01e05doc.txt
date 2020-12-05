@@ -1,0 +1,15 @@
+Crie um arquivo contendo somente "42"e NADA mais.
+• Ele deve ser nomeado:
+"\?$*'MaRViN'*$?\"
+• Exemplo:
+$>ls -lRa *MaRV* | cat -e
+-rw---xr-- 1 75355 32015 2 Oct 2 12:21 "\?$*'MaRViN'*$?\"$
+$>
+
+comando:
+touch \"\\\?\$\*\'\M\a\R\V\i\N\'\*\$\?\\\"
+
+3.1.2.1 Escape Character
+A non-quoted backslash ‘\’ is the Bash escape character. It preserves the literal value of the next character that follows, with the exception 
+of newline. If a \newline pair appears, and the backslash itself is not quoted, the \newline is treated as a line continuation (that is, it is 
+removed from the input stream and effectively ignored).

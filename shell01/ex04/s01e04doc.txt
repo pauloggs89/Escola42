@@ -1,0 +1,33 @@
+answer: ifconfig | grep 'ether' | sed "s/'*ether'//g"
+
+1st step:
+ifconfig - configure a network interface
+| - Pipes let you use the output of a program as the input of another one
+
+2nd step: filter the output to get only the ether information.
+grep - searches for PATTERNS in each FILE.  
+ether - PATTERNS is one or patterns separated by newline characters, and grep prints each line that matches a pattern.
+
+3rd step: remove the word 'ehter' from output.
+sed - stream editor for filtering and transforming text
+	Sed  is  a  stream  editor.  A stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline).  While in some ways
+	similar to an editor which permits scripted edits (such as ed), sed works by making only one pass over the input(s), and is consequently more efficient.  But it  is
+	sed's ability to filter text in a pipeline which particularly distinguishes it from other types of editors.
+"s/ether//g" <- "s/regexp/replacement/"
+    Attempt  to  match  regexp against the pattern space.  If successful, replace that portion matched with replacement.  The replacement may contain the special
+    character & to refer to that portion of the pattern space which matched, and the special escapes \1 through \9 to refer to the corresponding matching sub-ex‐
+	pressions in the regexp.
+
+4th step:bash remove whitespace from the output beginning.
+sed "s/^[[:space:]]*//g" <- sed troca os espaços brancos do início por nada, removendo os espaços brancos.
+font:https://linuxhint.com/trim_string_bash/
+
+5th step: changed permission to execute with ./MAC.sh | cat -e
+code: chmod 755 MAC.sh
+
+expected output:
+>$ ./MAC.sh | cat -e
+f2:5b:44:60:f5:aa txqueuelen 1000 (Ethernet)$
+8a:ec:c7:ac:30:81 txqueuelen 1000 (Ethernet)$
+ca:17:6b:da:36:fc txqueuelen 1000 (Ethernet)$
+02:42:0a:02:03:0a txqueuelen 0 (Ethernet)$

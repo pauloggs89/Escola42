@@ -1,0 +1,10 @@
+answer: find . -type f -o type d | wc -l
+
+find - search for files in a directory hierarchy
+. - starting-point (diretório atual)
+-type f - regular file
+-type d - directory
+-o -
+| - Pipes let you use the output of a program as the input of another one
+wc - print newline, word, and byte counts for each file
+-l - lines: print the newline counts

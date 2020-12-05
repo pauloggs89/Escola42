@@ -1,0 +1,19 @@
+
+resposta:
+#!/bin/sh
+ls -l | sed -n '1~2p'
+
+option to test:
+sed '$!N;s/\n/ /' infile
+
+| - Pipes let you use the output of a program as the input of another one
+
+sed - stream editor for filtering and transforming text
+-n, suppress automatic printing of pattern space
+n N    Read/append the next line of input into the pattern space.
+Use -n to suppress output, and the p command to print specific lines.
+
+first~step
+    Match every step'th line starting with line first.  For example, ``sed -n 1~2p'' will print all the odd-numbered lines in the input stream, and  the  address
+    2~5  will  match  every fifth line, starting with the second.  first can be zero; in this case, sed operates as if it were equal to step.  (This is an exten‐
+    sion.)

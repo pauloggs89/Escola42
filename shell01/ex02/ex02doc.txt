@@ -1,0 +1,40 @@
+answer: find . -type f -iname "*.sh" -exec basename {} .sh \;
+
+[steps]
+1 - created file with 'find.sh' name.
+2 - put the 'answer' inside the file.
+3 - change the permission to allow execution.
+	-r--r-xr-x : permissions -> chmod 455 testShell00
+	Read(r): 4 | Write(w): 2 | Execute(x): 1
+
+[-type  f]  f      regular file
+	 POSIX  specifies  `b', `c', `d', `l', `p', `f' and `s'.  GNU find also supports `D', representing a Door, where the OS provides these.  Further‐
+     more, GNU find allows multiple types to be specified at once in a comma-separated list.
+
+[find .]
+	This  manual  page  documents  the GNU version of find.  GNU find searches the directory tree rooted at each given starting-point by evaluating the given expression
+    from left to right, according to the rules of precedence (see section OPERATORS), until the outcome is known (the left hand side is false for and  operations,  true
+    for or), at which point find moves on to the next file name.  If no starting-point is specified, `.' is assumed.
+
+[-name ".sh"]
+    Base of file name (the path with the leading directories removed) matches shell pattern pattern.  Because the leading directories are removed, the file names
+    considered for a match with -name will never include a slash, so `-name a/b' will never match anything (you probably need to use -path instead).   A  warning
+    is issued if you try to do this, unless the environment variable POSIXLY_CORRECT is set.  The metacharacters (`*', `?', and `[]') match a `.' at the start of
+    the base name (this is a change in findutils-4.2.2; see section STANDARDS CONFORMANCE below).  To ignore a directory and the files under it, use -prune;  see
+    an  example  in  the  description of -path.  Braces are not recognised as being special, despite the fact that some shells including Bash imbue braces with a
+    special meaning in shell patterns.  The filename matching is performed with the use of the fnmatch(3) library function.  Don't forget to enclose the  pattern
+    in quotes in order to protect it from expansion by the shell.
+
+-exec command ;
+    Execute  command; true if 0 status is returned.  All following arguments to find are taken to be arguments to the command until an argument consisting of `;'
+    is encountered.  The string `{}' is replaced by the current file name being processed everywhere it occurs in the arguments to the command, not just in argu‐
+    ments  where  it is alone, as in some versions of find.  Both of these constructions might need to be escaped (with a `\') or quoted to protect them from ex‐
+    pansion by the shell.  See the EXAMPLES section for examples of the use of the -exec option.  The specified command is run once for each matched  file.   The
+    command  is executed in the starting directory.  There are unavoidable security problems surrounding use of the -exec action; you should use the -execdir op‐
+    tion instead.
+
+BASENAME
+       basename - strip directory and suffix from filenames
+       Print NAME with any leading directory components removed.  If specified, also remove a trailing SUFFIX.
+
+
